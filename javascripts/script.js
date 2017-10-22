@@ -8,14 +8,14 @@ function initMap() {
     center: {lat: 32.2217429, lng: -110.926479},
     zoom: 13,
     mapTypeControl: false,
-    clickableIcons: false   // make original map icons are not clickable. 
+    clickableIcons: false   // make original map icons are not clickable.
   });
 
   var locations = [
     {title: 'Fiamme Pizza', location: {lat: 32.3066498, lng: -110.8919207}},
     {title: 'Broadway Pizza Cafe', location: {lat: 32.2212125, lng: -110.8954217}},
-    {title: 'Grimaldi’s Pizzeria', location: {lat: 32.2271788, lng: -110.9431862}},
-    {title: 'Scordato’s Pizzeria', location: {lat: 32.2958994, lng: -110.9715268}},
+    {title: 'Grimaldi’s Pizzeria', location: {lat: 32.22737, lng: -110.94353}},
+    {title: 'Scordato’s Pizzeria', location: {lat: 32.295816, lng: -110.9717228}},
     {title: 'Serial Grillers', location: {lat: 32.236482, lng: -110.870034}},
     {title: 'Rocco’s Little Chicago', location: {lat: 32.2218517, lng: -110.9320512}}
   ];

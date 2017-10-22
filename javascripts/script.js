@@ -1,11 +1,14 @@
 var map;
 var markers = [];
+var defaultIcon;
+var clickedIcon;
 function initMap() {
   // Constructor creates a new map - only center and zoom are required.
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 32.2217429, lng: -110.926479},
     zoom: 13,
-    mapTypeControl: false
+    mapTypeControl: false,
+    clickableIcons: false   // make original map icons are not clickable. 
   });
 
   var locations = [
@@ -20,8 +23,8 @@ function initMap() {
   var largeInfowindow = new google.maps.InfoWindow();
   var bounds = new google.maps.LatLngBounds();
 
-  var defaultIcon = makeMarkerIcon('FE7569');
-  var clickedIcon = makeMarkerIcon('06E86C');
+  defaultIcon = makeMarkerIcon('FE7569');
+  clickedIcon = makeMarkerIcon('06E86C');
 
   // Initialize markers.
   for (var i = 0; i < locations.length; i++) {
@@ -61,6 +64,7 @@ function populateInfoWindow(marker, infowindow) {
   // Make sure the marker property is cleared if the infowindow is closed.
   infowindow.addListener('closeclick',function(){
     infowindow.close();
+    infowindow.marker.setIcon(defaultIcon);
   });
 }
 

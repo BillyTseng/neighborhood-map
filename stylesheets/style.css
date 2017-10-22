@@ -5,22 +5,23 @@ body {
   margin: 0;
   padding: 0;
 }
+
 #map {
-  height: 100%;
+  height: calc(100% - 32px);
 }
 
 .index--dark-header {
-    background: #1c262f;
-    border-bottom: 1px solid #1c262f;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-    color: white;
+  background: #1c262f;
+  border-bottom: 1px solid #1c262f;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .menu-button {
-    display: block;
-    background: url(../images/menu.gif) no-repeat;
-    overflow: hidden;
-    width: 34px;
-    height: 31px;
-    text-indent: -9999px;
+  display: block;
+  background: url(../images/menu.gif) no-repeat;
+  overflow: hidden;
+  width: 34px;
+  height: 31px;
+  text-indent: -9999px;
 }

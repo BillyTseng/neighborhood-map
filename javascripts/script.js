@@ -20,8 +20,14 @@ function initMap() {
 
 // This function populates the infowindow when the marker is clicked.
 function populateInfoWindow(marker, infowindow) {
+  var htmlStr = "";
+  if (marker.phone)
+    htmlStr = '<div>' + marker.title + '</div>' + '<div>Phone:&nbsp' + marker.phone + '</div>';
+  else
+    htmlStr = '<div>' + marker.title + '</div>' + '<div>Phone:&nbspN/A</div>';
+
   infowindow.marker = marker;
-  infowindow.setContent('<div>' + marker.title + '</div>');
+  infowindow.setContent(htmlStr);
   infowindow.open(map, marker);
   // Make sure the marker property is cleared if the infowindow is closed.
   infowindow.addListener('closeclick',function(){
@@ -63,7 +69,8 @@ function foursquareRequest(centerOfMap) {
           title: venues.name,
           animation: google.maps.Animation.DROP,
           icon: defaultIcon,
-          id: i
+          id: i,
+          phone: venues.contact.formattedPhone
         });
         // Push the marker to array of markers.
         markers.push(marker);

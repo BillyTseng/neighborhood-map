@@ -11,19 +11,14 @@
 <body>
   <div id="sidr">
     <ul>
-        <li><a href="#">All Markers</a></li>
-        <li>
-            <a href="#">Markers group</a>
-            <ul>
-                <li><a href="#">Marker 1</a></li>
-                <li><a href="#">Marker 2</a></li>
-            </ul>
-        </li>
-        <li><a href="#" id="close-menu-button">Close Menu</a></li>
+      <li><a id="close-menu-button">Close Menu</a></li>
     </ul>
     <form>
-        <input type="text" placeholder="Search..." />
+      <input type="text" placeholder="Search..." />
     </form>
+    <ul data-bind="foreach: markerList">
+      <li id="sidr-ul-li" data-bind="text: title"></li>
+    </ul>
   </div>
   <div class="index--dark-header">
     <a id="simple-menu" class="menu-button" href="#sidr">Toggle menu</a>
@@ -35,6 +30,7 @@
   <!-- Include the Sidr JS -->
   <script src="dist/jquery.sidr.js"></script>
   <script src="javascripts/sidr-actions.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
   <script src="javascripts/script.js" async></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=XXX&v=3&callback=initMap">

@@ -84,5 +84,20 @@ function foursquareRequest(centerOfMap) {
           populateInfoWindow(this, largeInfowindow);
         });
       });
+
+      // Apply knockout to maintain the side list.
+      ko.applyBindings(new viewModel());
     });
+}
+
+function marker(data) {
+  this.title = ko.observable(data.title);
+}
+
+function viewModel() {
+  var self = this;
+  this.markerList = ko.observableArray([]);
+  markers.forEach(function(markerItem) {
+    self.markerList.push(new marker(markerItem));
+  });
 }

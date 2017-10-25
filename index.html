@@ -9,7 +9,7 @@
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 <body>
-  <div id="sidr">
+  <aside id="sidr">
     <ul>
       <li id="side-header">Tucson Pizza Map</li>
       <li><a id="close-menu-button">Close Menu</a></li>
@@ -20,11 +20,11 @@
     <ul data-bind="foreach: markerList">
       <li id="sidr-ul-li" data-bind="text: title, click: $parent.markerSwitcher"></li>
     </ul>
-  </div>
-  <div class="index--dark-header">
+  </aside>
+  <header class="index--dark-header">
     <a id="simple-menu" class="menu-button" href="#sidr">Toggle menu</a>
-  </div>
-  <div id="map" class="wrapper"></div>
+  </header>
+  <main id="map" class="wrapper"></main>
 
   <!-- jQuery 1.x or other version from the CDN -->
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -32,9 +32,9 @@
   <script src="dist/jquery.sidr.js"></script>
   <script src="javascripts/sidr-actions.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-  <script src="javascripts/script.js" async></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=XXX&v=3&callback=initMap">
+  <script src="javascripts/script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=XXX&v=3&callback=initMap"
+    async defer onerror="mapError()">
   </script>
 </body>
 

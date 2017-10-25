@@ -18,6 +18,13 @@ function initMap() {
   foursquareRequest(centerOfMap);
 }
 
+/**
+ * Error callback for GMap API request
+ */
+function mapError() {
+  alert("Load Google Maps API error!!");
+}
+
 // This function populates the infowindow when the marker is clicked.
 function populateInfoWindow(marker, infowindow) {
   var htmlStr = "";

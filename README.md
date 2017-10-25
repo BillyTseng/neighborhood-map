@@ -1,5 +1,5 @@
-# Neighborhood Map
-A neighborhood map built using Google Maps API and FOURSQUARE API to show interested spots.
+# Tucson Pizza Map
+A pizza map built using Google Maps API and FOURSQUARE API to show 10 pizza restaurants in Tucson.
 
 Import [SIDR](https://www.berriart.com/sidr/#demos--usage) as a plugin of the hamburger menu.
 

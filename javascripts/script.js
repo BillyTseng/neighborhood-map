@@ -118,7 +118,7 @@ function MarkersViewModel() {
     markers.find(function(markerItem) {
       largeInfowindow.close();
       markerItem.setVisible(false);
-      if (markerItem.title.search(searchText) >= 0) {
+      if (markerItem.title.toLowerCase().search(searchText) >= 0) {
         markerItem.setVisible(true);
         self.markerList.push(new KoMarker(markerItem));
       }

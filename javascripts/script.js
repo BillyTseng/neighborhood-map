@@ -84,21 +84,21 @@ function foursquareRequest(centerOfMap) {
       });
 
       // Apply knockout to maintain the side list.
-      ko.applyBindings(new viewModel());
+      ko.applyBindings(new MarkersViewModel());
     })
     .fail(function() { alert("Load FOURSQUARE API error"); });
 }
 
-function marker(data) {
+function KoMarker(data) {
   this.title = ko.observable(data.title);
   this.id = ko.observable(data.id);
 }
 
-function viewModel() {
+function MarkersViewModel() {
   var self = this;
   this.markerList = ko.observableArray([]);
   markers.forEach(function(markerItem) {
-    self.markerList.push(new marker(markerItem));
+    self.markerList.push(new KoMarker(markerItem));
   });
 
   this.markerSwitcher = function(clickedMarker) {
@@ -120,7 +120,7 @@ function viewModel() {
       markerItem.setVisible(false);
       if (markerItem.title.search(searchText) >= 0) {
         markerItem.setVisible(true);
-        self.markerList.push(new marker(markerItem));
+        self.markerList.push(new KoMarker(markerItem));
       }
     });
   };

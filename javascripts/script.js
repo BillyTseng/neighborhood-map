@@ -1,4 +1,4 @@
-var map;
+var map, largeInfowindow;
 var markers = [];
 var defaultIcon;
 var clickedIcon;
@@ -51,7 +51,7 @@ function makeMarkerIcon(markerColor) {
 function foursquareRequest(centerOfMap) {
   var yourClientId = 'XXX';
   var yourClientSecret = 'XXX';
-  var largeInfowindow = new google.maps.InfoWindow();
+
   var url = 'https://api.foursquare.com/v2/venues/search?' +
             'query=pizza&' +
             'll=' + centerOfMap.lat + ',' + centerOfMap.lng +
@@ -59,6 +59,8 @@ function foursquareRequest(centerOfMap) {
             '&client_id=' + yourClientId +
             '&client_secret=' + yourClientSecret +
             '&v=20170101';
+
+  largeInfowindow = new google.maps.InfoWindow();
 
   $.getJSON(url,
     function(result) {
@@ -69,18 +71,14 @@ function foursquareRequest(centerOfMap) {
           title: venues.name,
           animation: google.maps.Animation.DROP,
           icon: defaultIcon,
-          id: i,
+          id: venues.id,
           phone: venues.contact.formattedPhone
         });
         // Push the marker to array of markers.
         markers.push(marker);
         marker.addListener('click', function() {
-          // Turn all markers color to default color, and change the current marker
-          for (var j = 0; j < 6; j++) {
-            markers[j].setIcon(defaultIcon);
-          }
+          setAllIconstoDefault();
           this.setIcon(clickedIcon);
-
           populateInfoWindow(this, largeInfowindow);
         });
       });
@@ -92,6 +90,7 @@ function foursquareRequest(centerOfMap) {
 
 function marker(data) {
   this.title = ko.observable(data.title);
+  this.id = ko.observable(data.id);
 }
 
 function viewModel() {
@@ -100,4 +99,21 @@ function viewModel() {
   markers.forEach(function(markerItem) {
     self.markerList.push(new marker(markerItem));
   });
+
+  this.markerSwitcher = function(clickedMarker) {
+    markers.find(function(marker, index) {
+      if (marker.id === clickedMarker.id()) {
+        setAllIconstoDefault();
+        marker.setIcon(clickedIcon);
+        populateInfoWindow(marker, largeInfowindow);
+      }
+    });
+  };
+}
+
+// This function turn all markers' color to default color
+function setAllIconstoDefault() {
+  for (var j = 0; j < markers.length; j++) {
+    markers[j].setIcon(defaultIcon);
+  }
 }

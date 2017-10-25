@@ -17,7 +17,7 @@
       <input type="text" placeholder="Search..." />
     </form>
     <ul data-bind="foreach: markerList">
-      <li id="sidr-ul-li" data-bind="text: title"></li>
+      <li id="sidr-ul-li" data-bind="text: title, click: $parent.markerSwitcher"></li>
     </ul>
   </div>
   <div class="index--dark-header">

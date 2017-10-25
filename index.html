@@ -14,9 +14,9 @@
       <li id="side-header">Tucson Pizza Map</li>
       <li><a id="close-menu-button">Close Menu</a></li>
     </ul>
-    <form>
+    <div id="form-like">
       <input type="text" placeholder="Search..." data-bind="textInput: searchText, event: { input: search }">
-    </form>
+    </div>
     <ul data-bind="foreach: markerList">
       <li id="sidr-ul-li" data-bind="text: title, click: $parent.markerSwitcher"></li>
     </ul>

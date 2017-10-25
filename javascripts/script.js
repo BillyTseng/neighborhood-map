@@ -55,7 +55,7 @@ function foursquareRequest(centerOfMap) {
   var url = 'https://api.foursquare.com/v2/venues/search?' +
             'query=pizza&' +
             'll=' + centerOfMap.lat + ',' + centerOfMap.lng +
-            '&limit=6&radius=100000' +
+            '&limit=10&radius=100000' +
             '&client_id=' + yourClientId +
             '&client_secret=' + yourClientSecret +
             '&v=20170101';
@@ -106,6 +106,20 @@ function viewModel() {
         setAllIconstoDefault();
         marker.setIcon(clickedIcon);
         populateInfoWindow(marker, largeInfowindow);
+      }
+    });
+  };
+
+  this.searchText = ko.observable("");
+  this.search = function() {
+    var searchText = this.searchText();
+    self.markerList.removeAll();
+    markers.find(function(markerItem) {
+      largeInfowindow.close();
+      markerItem.setVisible(false);
+      if (markerItem.title.search(searchText) >= 0) {
+        markerItem.setVisible(true);
+        self.markerList.push(new marker(markerItem));
       }
     });
   };

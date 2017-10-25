@@ -14,7 +14,7 @@
       <li><a id="close-menu-button">Close Menu</a></li>
     </ul>
     <form>
-      <input type="text" placeholder="Search..." />
+      <input type="text" placeholder="Search..." data-bind="textInput: searchText, event: { input: search }">
     </form>
     <ul data-bind="foreach: markerList">
       <li id="sidr-ul-li" data-bind="text: title, click: $parent.markerSwitcher"></li>

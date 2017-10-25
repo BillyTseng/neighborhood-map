@@ -86,7 +86,7 @@ function foursquareRequest(centerOfMap) {
       // Apply knockout to maintain the side list.
       ko.applyBindings(new viewModel());
     })
-    .error(function() { alert("Load FOURSQUARE API error"); });
+    .fail(function() { alert("Load FOURSQUARE API error"); });
 }
 
 function marker(data) {
